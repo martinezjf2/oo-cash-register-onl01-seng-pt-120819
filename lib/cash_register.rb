@@ -1,4 +1,4 @@
-
+require "pry"
 class CashRegister
 attr_accessor :discount, :items, :last_transaction, :total
 
@@ -12,25 +12,31 @@ def total
   @total
 end
 
-# def add_item(name, cost, number = 1)
-  # self.total = cost * number #Explain this to me!
-  # @items << name
-  # end
-
-  def add_item(title,price,quantity = 1) #need help on explaning this method
-    if quantity>1
-      i=0
-      while i<quantity
-        @items << title
-        i+=1
-      end
-    else
-      @items << title
-    end
-    @total += price*quantity
-    @last_transaction = price*quantity
-    @total
+def add_item(name, cost, number = 1)
+  self.total += cost * number #Explain this to me!
+  number.times do
+    # binding.pry
+    @items << name
   end
+  @last_transaction = cost * number
+  total
+  end
+
+  # def add_item(title,price,quantity = 1) #need help on explaning this method
+  #   if quantity>1
+  #     i=0
+  #     while i<quantity
+  #       @items << title
+  #       i+=1
+  #     end
+  #   else
+  #     @items << title
+  #   end
+  #   @total += price*quantity
+  #
+  #   @last_transaction = price*quantity
+  #   @total
+  # end
 
 def apply_discount
    if @discount > 0
